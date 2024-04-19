@@ -9,7 +9,7 @@ function getGridSize() {
 		let gridInput = document.querySelector("#gridInput");
 		let gridText = document.querySelector("#gridText");
 
-		if (gridInput.value < 1 || gridInput.value > 100) {
+		if (isNaN(gridInput.value) || gridInput.value < 1 || gridInput.value > 100) {
 			gridText.innerHTML = `Enter a number from 1 to 100`;
 		} else {
 			gridText.innerHTML = `This grid has ${gridInput.value}*${gridInput.value} squares`;
@@ -26,7 +26,7 @@ function createGrid() {
 
 	for (let i=0; i < (gridSize); i++) {
 		let gridSquares = document.createElement("div");
-		gridSquares.classList.add("gridSquares");
+		/*gridSquares.classList.add("gridSquares");*/
 		gridSquares.style.cssText = `
 			width: calc(100% / ${gridInput.value});
 			height: calc(100% / ${gridInput.value});
@@ -41,12 +41,12 @@ function createGrid() {
 			aspect-ratio: 1/1;
 		`;
 	}
+/*gridContainer:nth-child().addEventListener("mouseover", () => {
+	gridContainer:nth-child().style.cssText = `background-color: blue;`;
+})*/
 
 }
 
 getGridSize();
 
 
-/*squares.addEventListener("mouseover", () => {
-	squares.style.backgroundColor = "blue";
-}*/
