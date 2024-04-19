@@ -10,7 +10,7 @@ function getGridSize() {
 		let gridText = document.querySelector("#gridText");
 
 		if (isNaN(gridInput.value) || gridInput.value < 1 || gridInput.value > 100) {
-			gridText.innerHTML = `Enter a number from 1 to 100`;
+			gridText.innerHTML = `Enter a <em>right</em> number <strong>from 1 to 100</strong>`;
 		} else {
 			gridText.innerHTML = `This grid has ${gridInput.value}*${gridInput.value} squares`;
 			gridSize = gridInput.value * gridInput.value;
@@ -22,10 +22,13 @@ function getGridSize() {
 
 function createGrid() {
 
-	gridContainer.innerHTML = "";
+	let gridSquares = "";
+	let mouseSquares = [];
+
+	gridContainer.innerHTML = ""; //grid clean for new submit
 
 	for (let i=0; i < (gridSize); i++) {
-		let gridSquares = document.createElement("div");
+		gridSquares = document.createElement("div");
 		/*gridSquares.classList.add("gridSquares");*/
 		gridSquares.style.cssText = `
 			width: calc(100% / ${gridInput.value});
@@ -33,6 +36,7 @@ function createGrid() {
 			background-color: #eee;
 			border: 1px solid #ccc;
 		`;
+		mouseSquares.push(gridSquares);
 		gridContainer.appendChild(gridSquares);
 		gridContainer.style.cssText = `
 			width: 100%;
@@ -41,12 +45,27 @@ function createGrid() {
 			aspect-ratio: 1/1;
 		`;
 	}
-/*gridContainer:nth-child().addEventListener("mouseover", () => {
-	gridContainer:nth-child().style.cssText = `background-color: blue;`;
+
+	mouseSquares.forEach(gridSquares => {
+		gridSquares.addEventListener('mouseover', () => {
+			gridSquares.style.backgroundColor = "yellow";
+		});
+	});
+/*$(".gridSquares").live('mouseover', function(e) {
+  $(this).classList.toogle('yellow');
+});*/
+/*let gridSquare = document.querySelectorAll(`#gridContainer:nth-child()`);
+gridSquare.addEventListener("mouseover", () => {
+	gridSquare.style.cssText = `background: blue;`;
 })*/
 
 }
 
 getGridSize();
+
+/*table.onmouseover = function(event) {
+  let target = event.target;
+  target.style.background = 'pink';
+};*/
 
 

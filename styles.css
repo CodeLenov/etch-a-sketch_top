@@ -6,3 +6,7 @@
 form {
 	display: block;
 }
+
+.yellow {
+	background-color: yellow;
+}
