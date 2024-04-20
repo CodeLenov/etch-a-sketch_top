@@ -1,5 +1,9 @@
 let gridContainer = document.querySelector("#gridContainer");
 let gridSize = 16*16;
+let gridSquares = "";
+let mouseSquares = [];
+
+getGridSize();
 
 function getGridSize() {
 	let gridForm = document.querySelector("#gridForm");
@@ -22,50 +26,40 @@ function getGridSize() {
 
 function createGrid() {
 
-	let gridSquares = "";
-	let mouseSquares = [];
-
-	gridContainer.innerHTML = ""; //grid clean for new submit
+	gridContainer.innerHTML = ""; // grid clean for new submit
 
 	for (let i=0; i < (gridSize); i++) {
+
 		gridSquares = document.createElement("div");
 		/*gridSquares.classList.add("gridSquares");*/
+		gridContainer.appendChild(gridSquares);
+
 		gridSquares.style.cssText = `
 			width: calc(100% / ${gridInput.value});
 			height: calc(100% / ${gridInput.value});
 			background-color: #eee;
 			border: 1px solid #ccc;
 		`;
-		mouseSquares.push(gridSquares);
-		gridContainer.appendChild(gridSquares);
+
 		gridContainer.style.cssText = `
 			width: 100%;
 			display: flex;
 			flex-wrap: wrap;
 			aspect-ratio: 1/1;
 		`;
+
+		mouseSquares.push(gridSquares); // create array for doMouseHovering()
+
 	}
 
+	doMouseHovering();
+
+}
+
+function doMouseHovering() {
 	mouseSquares.forEach(gridSquares => {
 		gridSquares.addEventListener('mouseover', () => {
 			gridSquares.style.backgroundColor = "yellow";
 		});
 	});
-/*$(".gridSquares").live('mouseover', function(e) {
-  $(this).classList.toogle('yellow');
-});*/
-/*let gridSquare = document.querySelectorAll(`#gridContainer:nth-child()`);
-gridSquare.addEventListener("mouseover", () => {
-	gridSquare.style.cssText = `background: blue;`;
-})*/
-
 }
-
-getGridSize();
-
-/*table.onmouseover = function(event) {
-  let target = event.target;
-  target.style.background = 'pink';
-};*/
-
-
