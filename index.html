@@ -10,12 +10,36 @@
 
 <body>
 
-<form id="gridForm" action="">
-	<label for="gridInput">Enter a number of squares per side: 1...100</label><br/>
-	<input id="gridInput" type="text"><br/>
-	<button type="submit">Submit</button>
-</form>
-<div id="gridText"></div>
+<div id="gridUser">
+
+	<h1>Etch-a-Sketch</h1>
+
+	<form id="gridForm">
+
+		<p><label for="gridInput">Enter a number of squares per side: 1...100</label></p>
+		<p><input id="gridInput" type="text"></p>
+
+		<p><legend>Choose mouse hover color</legend></p>
+		<p>
+
+			<input id="gridRadioYellow" name="gridRadio" value ="yellow" type="radio" checked>
+			<label for="gridRadioYellow"> Yellow</label>
+
+			<input id="gridRadioRandomize" name="gridRadio" value ="randomize" type="radio">
+			<label for="gridRadioRandomize"> Randomize</label>
+
+			<input id="gridRadioRandomizeEverySquare" name="gridRadio" value ="randomizeEverySquare" type="radio">
+			<label for="gridRadioRandomizeEverySquare"> Randomize every square</label>
+
+		</p>
+
+		<p><button type="submit">Submit</button></p>
+
+	</form>
+
+	<div id="gridText"></div><br/>
+
+</div>
 
 <div id="gridContainer"></div>
 

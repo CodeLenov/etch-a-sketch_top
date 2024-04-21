@@ -1,12 +1,19 @@
 * {
 	box-sizing: border-box;
 	font-family: Arial, sans-serif;
+	text-align: center;
 }
 
-form {
-	display: block;
+body {
+	display: flex;
+	flex-flow: row wrap;
+	justify-content: flex-start;
 }
 
-.yellow {
-	background-color: yellow;
+#gridUser, #gridContainer {
+	flex: 1 1 0%;
+}
+
+#gridInput {
+	text-align: left;
 }
