@@ -13,6 +13,10 @@ body {
 	flex: 1 1 0%;
 }
 
+#gridUser {
+	flex: 99 99 0%;
+}
+
 #gridInput {
 	text-align: left;
 }

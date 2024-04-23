@@ -7,9 +7,9 @@ const SQUARESBACKGROUNDCOLOR = `#eee`; // use a few times
 let mouseSquares = [];
 let mouseHoveringColor = "";
 
-getGridPerSide(); //initializing program
+getSquaresPerSide(); //initializing program
 
-function getGridPerSide() {
+function getSquaresPerSide() {
 
 	let gridForm = document.querySelector("#gridForm");
 
@@ -21,8 +21,9 @@ function getGridPerSide() {
 		let gridRadioChecked = "";
 		let gridText = document.querySelector("#gridText");
 
-		mouseHoveringColor = ""; // clean color for new submit
+		mouseHoveringColor = ""; // clean background color for new submit
 
+		//get background color value
 		for (const gridRadioOne of gridRadio) {
 			if (gridRadioOne.checked) {
 				gridRadioChecked = gridRadioOne.value;
@@ -36,23 +37,23 @@ function getGridPerSide() {
 			gridText.innerHTML = `
 				The grid has <em>${gridInput.value}*${gridInput.value}</em> squares<br/>
 				The mouse hover color is <strong>yellow</strong><br/>
-				<em>(For erase color - click on the square)</em><br/>
+				<em>(For erase the color - click on the square)</em><br/>
 			`;
-			mouseHoveringColor = "yellow"; // value for doMouseHovering()
+			mouseHoveringColor = "yellow"; // pass background color value for doMouseHovering()
 		} else if (gridRadioChecked === "randomize") {
 			gridText.innerHTML = `
 				The grid has <em>${gridInput.value}*${gridInput.value}</em> squares<br/>
 				The mouse hover color is <strong>randomize</strong><br/>
-				<em>(For erase color - click on the square)</em><br/>
+				<em>(For erase the color - click on the square)</em><br/>
 			`;
-			mouseHoveringColor = "randomize"; // value for doMouseHovering()
+			mouseHoveringColor = "randomize"; // pass background color value for doMouseHovering()
 		} else {
 			gridText.innerHTML = `
 				The grid has <em>${gridInput.value}*${gridInput.value}</em> squares<br/>
 				The mouse hover color is <strong>randomize every square</strong><br/>
-				<em>(For erase color - click on the square)</em><br/>
+				<em>(For erase the color - click on the square)</em><br/>
 			`;
-			mouseHoveringColor = "randomizeEverySquare"; // value for doMouseHovering()
+			mouseHoveringColor = "randomizeEverySquare"; // pass background color value for doMouseHovering()
 		}
 
 		gridSize = gridInput.value * gridInput.value;
@@ -69,8 +70,8 @@ function createGrid() {
 	for (let i=0; i < (gridSize); i++) {
 
 		gridSquares = document.createElement("div");
-		gridSquares.classList.add("gridSquares");
-		gridContainer.appendChild(gridSquares);
+
+		gridContainer.appendChild(gridSquares); // create grid
 
 		gridSquares.style.cssText = `
 			width: calc(100% / ${gridInput.value});
@@ -79,6 +80,8 @@ function createGrid() {
 			border: 1px solid #ccc;
 		`;
 
+		// `vmin` - because need maximal grid ON SCREEN with different size
+		// So also don't need use media queries for different screens
 		gridContainer.style.cssText = `
 			width: 95vmin;
 			height: 95vmin;
@@ -100,7 +103,7 @@ function doMouseHovering() {
 
 // need mouseBackgroundColor for calculate "randomize" (NOT for "randomizeEverySquare")
 
-	let mouseBackgroundColor = ""; // clean color for new submit
+	let mouseBackgroundColor = ""; // clean background color for new submit
 
 	if (mouseHoveringColor === "yellow") {
 		mouseBackgroundColor = "yellow";
@@ -128,6 +131,7 @@ function doMouseHovering() {
 
 		});
 
+		// for erase background color
 		gridSquares.addEventListener('click', () => {
 			gridSquares.style.backgroundColor = SQUARESBACKGROUNDCOLOR;
 		});
