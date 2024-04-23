@@ -112,7 +112,9 @@ function doMouseHovering() {
 	}
 
 	mouseSquares.forEach(gridSquares => {
-
+gridSquares.addEventListener('touchstart', () => {
+			gridSquares.style.backgroundColor = SQUARESBACKGROUNDCOLOR;
+		});
 		gridSquares.addEventListener('mouseover', () => {
 			
 			if (mouseHoveringColor === "yellow") {
@@ -129,27 +131,6 @@ function doMouseHovering() {
 		});
 
 		gridSquares.addEventListener('click', () => {
-			gridSquares.style.backgroundColor = SQUARESBACKGROUNDCOLOR;
-		});
-
-		// for touch screens
-		gridSquares.addEventListener('touchmove', () => {
-			
-			if (mouseHoveringColor === "yellow") {
-				gridSquares.style.backgroundColor = mouseBackgroundColor;	
-			} else if (mouseHoveringColor === "randomize") {
-				gridSquares.style.backgroundColor = mouseBackgroundColor;
-			} else {
-				let r = Math.floor(Math.random() * 256);
-				let g = Math.floor(Math.random() * 256);
-				let b = Math.floor(Math.random() * 256);
-				gridSquares.style.backgroundColor = `rgb(${r}, ${g}, ${b})`;
-			}
-
-		});
-
-		// erase color
-		gridSquares.addEventListener('touchcancel', () => {
 			gridSquares.style.backgroundColor = SQUARESBACKGROUNDCOLOR;
 		});
 
