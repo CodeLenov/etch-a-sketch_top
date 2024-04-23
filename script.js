@@ -2,6 +2,7 @@
 
 let gridContainer = document.querySelector("#gridContainer");
 let gridSize = 16*16;
+const SQUARESBACKGROUNDCOLOR = `#eee`;
 let gridSquares = "";
 let mouseSquares = [];
 let mouseHoveringColor = "";
@@ -35,18 +36,21 @@ function getGridPerSide() {
 			gridText.innerHTML = `
 				The grid has <em>${gridInput.value}*${gridInput.value}</em> squares<br/>
 				The mouse hover color is <strong>yellow</strong><br/>
+				<em>(For erase color - click on the square)</em><br/>
 			`;
 			mouseHoveringColor = "yellow"; // value for doMouseHovering()
 		} else if (gridRadioChecked === "randomize") {
 			gridText.innerHTML = `
 				The grid has <em>${gridInput.value}*${gridInput.value}</em> squares<br/>
 				The mouse hover color is <strong>randomize</strong><br/>
+				<em>(For erase color - click on the square)</em><br/>
 			`;
 			mouseHoveringColor = "randomize"; // value for doMouseHovering()
 		} else {
 			gridText.innerHTML = `
 				The grid has <em>${gridInput.value}*${gridInput.value}</em> squares<br/>
 				The mouse hover color is <strong>randomize every square</strong><br/>
+				<em>(For erase color - click on the square)</em><br/>
 			`;
 			mouseHoveringColor = "randomizeEverySquare"; // value for doMouseHovering()
 		}
@@ -60,7 +64,7 @@ function getGridPerSide() {
 
 function createGrid() {
 
-	gridContainer.innerHTML = ""; // grid clean for new submit
+	gridContainer.innerHTML = ""; // clean gridContainer for new submit
 
 	for (let i=0; i < (gridSize); i++) {
 
@@ -71,13 +75,13 @@ function createGrid() {
 		gridSquares.style.cssText = `
 			width: calc(100% / ${gridInput.value});
 			height: calc(100% / ${gridInput.value});
-			background-color: #eee;
+			background-color: ${SQUARESBACKGROUNDCOLOR};
 			border: 1px solid #ccc;
 		`;
 
 		gridContainer.style.cssText = `
-			height: 95vmin;
 			width: 95vmin;
+			height: 95vmin;
 			margin-top: 1vmin;
 			display: flex;
 			flex-wrap: wrap;
@@ -110,6 +114,7 @@ function doMouseHovering() {
 	mouseSquares.forEach(gridSquares => {
 
 		gridSquares.addEventListener('mouseover', () => {
+			
 			if (mouseHoveringColor === "yellow") {
 				gridSquares.style.backgroundColor = mouseBackgroundColor;	
 			} else if (mouseHoveringColor === "randomize") {
@@ -121,6 +126,11 @@ function doMouseHovering() {
 				gridSquares.style.backgroundColor = `rgb(${r}, ${g}, ${b})`;
 			}
 
+		});
+
+		// erase color
+		gridSquares.addEventListener('click', () => {
+			gridSquares.style.backgroundColor = SQUARESBACKGROUNDCOLOR;
 		});
 
 	});
