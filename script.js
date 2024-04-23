@@ -20,7 +20,7 @@ function getGridPerSide() {
 		let gridRadioChecked = "";
 		let gridText = document.querySelector("#gridText");
 
-		mouseHoveringColor = "";
+		mouseHoveringColor = ""; // clean color for new submit
 
 		for (const gridRadioOne of gridRadio) {
 			if (gridRadioOne.checked) {
@@ -76,8 +76,9 @@ function createGrid() {
 		`;
 
 		gridContainer.style.cssText = `
-			height: 97vh;
-			width: auto;
+			height: 95vmin;
+			width: 95vmin;
+			margin-top: 1vmin;
 			display: flex;
 			flex-wrap: wrap;
 			aspect-ratio: 1/1;
@@ -95,7 +96,7 @@ function doMouseHovering() {
 
 // need mouseBackgroundColor for calculate "randomize" (NOT for "randomizeEverySquare")
 
-	let mouseBackgroundColor = "";
+	let mouseBackgroundColor = ""; // clean color for new submit
 
 	if (mouseHoveringColor === "yellow") {
 		mouseBackgroundColor = "yellow";
