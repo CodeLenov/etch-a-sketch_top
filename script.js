@@ -113,24 +113,7 @@ function doMouseHovering() {
 
 	mouseSquares.forEach(gridSquares => {
 
-gridSquares.addEventListener('touchstart', handleTouchStart);
-		gridSquares.addEventListener('touchend', handleTouchEnd);
-		gridSquares.addEventListener('mouseover', handleMouseOver);
-gridSquares.addEventListener(`click`, handleMouseClick);
-		function handleTouchStart() {
-			touching = true;
-		}
-
-		function handleTouchEnd() {
-			if (touching) {
-				gridSquares.style.backgroundColor = SQUARESBACKGROUNDCOLOR;
-				touching = false;
-			}
-		}
-
-		function handleMouseOver() {
-
-
+		gridSquares.addEventListener('pointerover', () => {
 			
 			if (mouseHoveringColor === "yellow") {
 				gridSquares.style.backgroundColor = mouseBackgroundColor;	
@@ -142,10 +125,12 @@ gridSquares.addEventListener(`click`, handleMouseClick);
 				let b = Math.floor(Math.random() * 256);
 				gridSquares.style.backgroundColor = `rgb(${r}, ${g}, ${b})`;
 			}
-}
-		function handleMouseClick() {
+
+		});
+
+		gridSquares.addEventListener('click', () => {
 			gridSquares.style.backgroundColor = SQUARESBACKGROUNDCOLOR;
-		}
+		});
 
 	});
 
