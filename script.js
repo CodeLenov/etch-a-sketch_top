@@ -1,13 +1,13 @@
 // also add functional for yellow color (not randomize) and for randomize every square
 
 let gridContainer = document.querySelector("#gridContainer");
-let gridSize = 16*16;
-const SQUARESBACKGROUNDCOLOR = `#eee`;
+let gridSize = "";
 let gridSquares = "";
+const SQUARESBACKGROUNDCOLOR = `#eee`; // use a few times
 let mouseSquares = [];
 let mouseHoveringColor = "";
 
-getGridPerSide();
+getGridPerSide(); //initializing program
 
 function getGridPerSide() {
 
@@ -128,8 +128,28 @@ function doMouseHovering() {
 
 		});
 
-		// erase color
 		gridSquares.addEventListener('click', () => {
+			gridSquares.style.backgroundColor = SQUARESBACKGROUNDCOLOR;
+		});
+
+		// for touch screens
+		gridSquares.addEventListener('touchmove', () => {
+			
+			if (mouseHoveringColor === "yellow") {
+				gridSquares.style.backgroundColor = mouseBackgroundColor;	
+			} else if (mouseHoveringColor === "randomize") {
+				gridSquares.style.backgroundColor = mouseBackgroundColor;
+			} else {
+				let r = Math.floor(Math.random() * 256);
+				let g = Math.floor(Math.random() * 256);
+				let b = Math.floor(Math.random() * 256);
+				gridSquares.style.backgroundColor = `rgb(${r}, ${g}, ${b})`;
+			}
+
+		});
+
+		// erase color
+		gridSquares.addEventListener('touchcancel', () => {
 			gridSquares.style.backgroundColor = SQUARESBACKGROUNDCOLOR;
 		});
 
