@@ -113,7 +113,7 @@ function doMouseHovering() {
 
 	mouseSquares.forEach(gridSquares => {
 
-		gridSquares.addEventListener('pointerover', () => {
+		gridSquares.addEventListener('pointermove', () => {
 			
 			if (mouseHoveringColor === "yellow") {
 				gridSquares.style.backgroundColor = mouseBackgroundColor;	
