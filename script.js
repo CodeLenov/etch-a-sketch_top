@@ -7,7 +7,7 @@ const SQUARESBACKGROUNDCOLOR = `#eee`; // use a few times
 let mouseSquares = [];
 let mouseHoveringColor = "";
 
-getSquaresPerSide(); //initializing program
+getSquaresPerSide(); // program initialization
 
 function getSquaresPerSide() {
 
