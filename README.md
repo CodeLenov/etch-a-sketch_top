@@ -1,5 +1,5 @@
 # etch_a_sketch_top
-Etch-a-Sketch| JavaScript, CSS, HTML | Front End Foundations Course (JavaScript, CSS, HTML, Git) | 04/05 | The Odin Project | 2024
+Etch-a-Sketch| JavaScript, CSS, HTML | Front End Foundations (JavaScript, CSS, HTML, Git) | 04/05 | The Odin Project | 2024
 
 Don’t forget to commit early and often! You can reference the Commit Messages lesson https://www.theodinproject.com/lessons/foundations-commit-messages !
 
